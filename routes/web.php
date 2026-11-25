@@ -9,7 +9,7 @@ Route::get('/', function () {
 });
 
 Route::get('/login', [LoginController::class, 'show'])->name('login');
-Route::post('/login', [LoginController::class, 'login'])->name('login.proses');
+Route::post('/login', [LoginController::class, 'login'])->name('login.proses')->middleware('throttle:5,1');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->group(function () {
